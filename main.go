@@ -14,7 +14,7 @@ func main() {
 }
 
 type config struct {
-	pokeapiClient Client
-	Next          *string
-	Previous      *string
+	pokeapiClient    Client
+	nextLocationsURL *string
+	prevLocationsURL *string
 }
