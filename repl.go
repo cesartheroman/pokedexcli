@@ -41,6 +41,12 @@ func cleanInput(text string) []string {
 	return words
 }
 
+type cliCommand struct {
+	name        string
+	description string
+	callback    func(*config) error
+}
+
 func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"help": {
@@ -64,11 +70,5 @@ func getCommands() map[string]cliCommand {
 			callback:    commandMapb,
 		},
 	}
-}
-
-type cliCommand struct {
-	name        string
-	description string
-	callback    func(*config) error
 }
 

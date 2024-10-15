@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-const baseURL = "https://pokeapi.co/api/v2/"
+const baseURL = "https://pokeapi.co/api/v2"
 
 func commandExit(cfg *config) error {
 	os.Exit(0)
@@ -28,7 +28,7 @@ func commandHelp(cfg *config) error {
 }
 
 func commandMapf(cfg *config) error {
-	locations, err := cfg.pokeapiClient.listLocations(cfg.nextLocationsURL)
+	locations, err := cfg.pokeapiClient.listLocations(cfg.nextLocationsURL, cfg)
 	if err != nil {
 		return err
 	}
@@ -48,7 +48,7 @@ func commandMapb(cfg *config) error {
 		return errors.New("at first page")
 	}
 
-	locations, err := cfg.pokeapiClient.listLocations(cfg.prevLocationsURL)
+	locations, err := cfg.pokeapiClient.listLocations(cfg.prevLocationsURL, cfg)
 	if err != nil {
 		return err
 	}
