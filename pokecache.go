@@ -17,6 +17,8 @@ type Cache struct {
 }
 
 func (c *Cache) Add(key string, val []byte) {
+	c.mu.Lock()
+	defer c.mu.Unlock()
 	entry := cacheEntry{
 		createdAt: time.Now(),
 		value:     val,
